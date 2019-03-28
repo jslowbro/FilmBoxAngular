@@ -1,0 +1,67 @@
+package com.janchabik.filmbox.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "reviews")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Review implements Serializable{
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "author")
+    private String author;
+
+    @Column(name = "content")
+    private String content;
+
+    @Column(name ="upvotes")
+    private int upvotes;
+
+    @Column(name = "downvotes")
+    private int downvotes;
+
+    @ManyToOne
+    @JoinColumn(name = "film_id", nullable = false)
+    @JsonManagedReference
+    @JsonIgnore
+    private Film film;
+
+
+
+    public Review(String author, String content, Film film) {
+        this.author = author;
+        this.content = content;
+        this.film = film;
+        this.upvotes = 0;
+        this.downvotes = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", content='" + content + '\'' +
+                ", upvotes=" + upvotes +
+                ", downvotes=" + downvotes +
+                ", film=" + film +
+                '}';
+    }
+
+}
