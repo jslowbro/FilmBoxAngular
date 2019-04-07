@@ -1,6 +1,7 @@
 package com.janchabik.filmbox.rest;
 
 import com.janchabik.filmbox.model.Film;
+import com.janchabik.filmbox.model.Review;
 import com.janchabik.filmbox.repo.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,5 +27,10 @@ public class FilmRESTController {
     @GetMapping("/films/{id}")
     private Film getFilmById (@PathVariable int id) {
         return filmRepository.findById(id).orElse(null);
+    }
+
+    @GetMapping("/films/{id}/reviews")
+    private List<Review> getReviewsForFilm(@PathVariable int id){
+        return filmRepository.findById(id).orElse(null).getReviews();
     }
 }

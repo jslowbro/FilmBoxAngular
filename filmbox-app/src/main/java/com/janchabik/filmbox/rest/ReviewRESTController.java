@@ -16,11 +16,9 @@ public class ReviewRESTController {
     @Autowired
     private ReviewRepository reviewRepository;
 
-
     @GetMapping("/reviews")
-    public List<Review> getAllReviews(){
+    public List<Review> getAllReviews() {
         return reviewRepository.findAll();
     }
-
 
 }
