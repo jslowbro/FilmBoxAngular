@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div *ngIf="film">
+  <mat-card>
+  <mat-toolbar>
+    <span> {{film.title}}</span>
+  </mat-toolbar>
+    <mat-card-content>
+      <mat-list>
+      <mat-list-item>
+        <label for="theatricalRelease" >Theatrical Release: </label>
+        <label id="theatricalRelease" >{{film.theatricalRelease}} </label>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div *ngIf="creator">
+        <mat-list-item (click)="gotoCreator(creator)" >
+          <label for="creator"> Creator: </label>
+          <label id="creator"> {{creator.name}} {{creator.surname}} </label>
+        </mat-list-item>
+      </div>
+      <mat-divider></mat-divider>
+        <mat-list-item>
+          <label for="duration"> Duration:</label>
+          <label id="duration">{{film.duration}} mins</label>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <label for="genre"> Genre: </label>
+          <label id="genre"> {{film.genre}} </label>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <app-review-list [reviews]="film.reviews" [size]="3" [sortBy]="'upvotes'" [header]="'User Reviews'"></app-review-list>
+  <app-review-form [film]="film"></app-review-form>
+</div>
+</body>
+</html>

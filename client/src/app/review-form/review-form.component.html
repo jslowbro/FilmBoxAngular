@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<mat-card>
+  <mat-card-content>
+<h2 mat-line > Your Review </h2>
+<div class="example-container">
+    <mat-form-field>
+      <mat-label for="author"> Name </mat-label>
+      <input matInput required id="author" [(ngModel)]="review.author" name="author">
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label for="content"> Review </mat-label>
+      <textarea matInput id="content" required [(ngModel)]="review.content" name="content"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="saveReview()" style="background-color: #4BB543">Submit</button>
+
+</div>
+  </mat-card-content>
+</mat-card>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<mat-card>
+  <mat-toolbar> List of films </mat-toolbar>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let film of films" (click)="gotoDetail(film)">
+        <h3 mat-line> {{film.title}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+</body>
+</html>

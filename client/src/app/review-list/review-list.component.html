@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+<mat-card>
+<mat-toolbar>
+  <span>{{header}}</span>
+</mat-toolbar>
+  <mat-card-content>
+    <mat-button-toggle-group #group="matButtonToggleGroup" value="{{3}}" (change)="setSize(group.value)">
+      <mat-button-toggle value="{{3}}"> Show Best</mat-button-toggle>
+      <mat-button-toggle value="{{reviews.length}}">Show All</mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-list>
+      <mat-list-item *ngFor="let review of displayReviews" style="height: 100px">
+        <label mat-line> {{review.author}}</label>
+        <button (click)="incUpvotes(review)" class="btn btn-success"></button>
+        <span>{{review.upvotes}}</span>
+        <button (click)="incDownvotes(review)" class="btn btn-danger"></button>
+        <span> {{review.downvotes}}</span>
+        <div mat-line style="word-wrap: break-word; width: 400px; white-space: normal" > {{review.content}}</div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+</body>
+</html>
+

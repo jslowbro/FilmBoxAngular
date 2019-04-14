@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<body>
+<html>
+<h1> List of All Creators </h1>
+
+<div *ngFor="let creator of creators" (click)="gotoCreator(creator)">
+  <a> {{creator.name}}  {{creator.surname}} </a>
+</div>
+
+</html>

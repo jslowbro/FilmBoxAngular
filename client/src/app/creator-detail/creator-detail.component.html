@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div *ngIf="creator">
+<mat-card>
+  <mat-toolbar>{{creator.name}}  {{creator.surname}}</mat-toolbar>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <span> {{creator.description}}</span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <!--<mat-list-item>
+        <label> {{creator}}</label>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+
+      </mat-list-item>-->
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+<app-film-list [creator]="creator"></app-film-list>
+</div>
+</body>
+</html>
