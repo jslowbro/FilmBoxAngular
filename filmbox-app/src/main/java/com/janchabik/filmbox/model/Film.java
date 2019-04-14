@@ -1,8 +1,7 @@
 package com.janchabik.filmbox.model;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +25,7 @@ public class Film implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
 
     @Column(name = "title")
     private String title;
@@ -42,12 +41,13 @@ public class Film implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "creator_id", nullable = false)
-    @JsonManagedReference
+    @JsonIgnore
     private Creator creator;
 
 
-    @OneToMany(mappedBy = "film")
-    @JsonBackReference
+
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@JsonBackReference
     private List<Review> reviews;
 
 

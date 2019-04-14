@@ -1,7 +1,6 @@
 package com.janchabik.filmbox.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +21,7 @@ public class Review implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
 
     @Column(name = "author")
     private String author;
@@ -38,11 +37,8 @@ public class Review implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "film_id", nullable = false)
-    @JsonManagedReference
     @JsonIgnore
     private Film film;
-
-
 
     public Review(String author, String content, Film film) {
         this.author = author;

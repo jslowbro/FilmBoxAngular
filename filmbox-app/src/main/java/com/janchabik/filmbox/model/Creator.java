@@ -1,6 +1,5 @@
 package com.janchabik.filmbox.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,7 +19,7 @@ public class Creator implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -31,8 +30,8 @@ public class Creator implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "creator")
-    @JsonBackReference
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@JsonBackReference
     private List<Film> films;
 
 

@@ -24,12 +24,14 @@ public class CreatorRESTController {
     }
 
     @GetMapping("/creators/{id}")
-    public Creator getCreatorById(@PathVariable int id){
+    public Creator getCreatorById(@PathVariable long id){
         return creatorRepository.findById(id).orElse(null);
     }
 
     @GetMapping("/creators/{id}/films")
-    public List<Film> getFilmsOfCreator(@PathVariable int id){
+    public List<Film> getFilmsOfCreator(@PathVariable long id){
         return creatorRepository.findById(id).orElse(null).getFilms();
     }
+
+
 }
