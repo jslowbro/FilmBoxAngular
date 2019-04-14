@@ -15,19 +15,31 @@ public class ReviewRESTController {
     @Autowired
     private ReviewRepository reviewRepository;
 
+    @Autowired
+    private FilmRESTController filmRESTController;
+
     @GetMapping("/reviews")
     public List<Review> getAllReviews() {
         return reviewRepository.findAll();
     }
     @PutMapping("/reviews/{id}")
-    public Review updateReview(@PathVariable long id, @Valid @RequestBody Review reviewUpdated) throws Exception{
-        return reviewRepository.findById(id).
-                map(review -> {
-                    review.setContent(reviewUpdated.getContent());
-                    review.setUpvotes(reviewUpdated.getUpvotes());
-                    review.setDownvotes(reviewUpdated.getDownvotes());
-                    return reviewRepository.save(review);
-                }).orElseThrow(() -> new Exception("Review update failed"));
+    public Review updateReview(@PathVariable long id, @Valid @RequestBody Review reviewUpdated) throws Exception {
+        try {
+            return reviewRepository.findById(id).
+                    map(review -> {
+                        review.setContent(reviewUpdated.getContent());
+                        review.setUpvotes(reviewUpdated.getUpvotes());
+                        review.setDownvotes(reviewUpdated.getDownvotes());
+                        try{
+                            filmRESTController.updateFilmRating(review.getFilm().getId(), review);
+                        } catch (Exception e) {
+                            System.out.print(e);
+                        }
+                        return reviewRepository.save(review);
+                    }).orElseThrow(() -> new Exception("Review update failed"));
+        } catch (Exception e) {
+            throw new Exception("Review update failed");
+        }
 
     }
 

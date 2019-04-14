@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -47,10 +49,28 @@ public class FilmRESTController {
     private Review addReview(@PathVariable long id, @Valid @RequestBody Review review) throws Exception {
         return filmRepository.findById(id)
                 .map(film -> {
+                    try {
+                        updateFilmRating(id, review);
+                    } catch (Exception e){
+                        System.out.println(e);
+                    }
                     review.setFilm(film);
-                    //film.getReviews().add(review);
-                    //filmRepository.save(film);
-                    return reviewRepository.save(review);
+                    review.setDate(Date.valueOf(LocalDate.now()));
+                    Review r = reviewRepository.save(review);
+
+                    return r;
                 }).orElseThrow(()-> new Exception("Film not found"));
+    }
+
+    public void updateFilmRating(long filmId, Review review) throws Exception {
+        Film film = filmRepository.findById(filmId).orElseThrow(()-> new Exception("Film not Found"));
+        double total = review.getRating();
+        int count = 1;
+        for(Review r : film.getReviews()){
+            total += r.getRating();
+            count++;
+        }
+        film.setRating(total/count);
+        filmRepository.save(film);
     }
 }

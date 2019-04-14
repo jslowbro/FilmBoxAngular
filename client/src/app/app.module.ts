@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ReviewService} from './shared/services/review/review.service';
@@ -15,7 +14,7 @@ import {
   MatButtonModule, MatButtonToggleModule,
   MatCardModule,
   MatInputModule,
-  MatListModule,
+  MatListModule, MatSliderModule,
   MatTabBody,
   MatTabLabel,
   MatTabsModule,
@@ -23,6 +22,7 @@ import {
 } from '@angular/material';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import {FormsModule} from '@angular/forms';
+import { LatestReviewListComponent } from './latest-review-list/latest-review-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import {FormsModule} from '@angular/forms';
     FilmDetailsComponent,
     CreatorDetailComponent,
     CreatorListComponent,
-    ReviewFormComponent
+    ReviewFormComponent,
+    LatestReviewListComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,8 @@ import {FormsModule} from '@angular/forms';
     FormsModule,
     MatTabsModule,
     MatButtonModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSliderModule
   ],
   providers: [ReviewService],
   bootstrap: [AppComponent]

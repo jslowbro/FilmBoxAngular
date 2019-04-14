@@ -3,8 +3,13 @@
 <body>
 <div *ngIf="film">
   <mat-card>
-  <mat-toolbar>
-    <span> {{film.title}}</span>
+  <mat-toolbar style="height: max-content">
+    <div style="border: ">
+      <span> {{film.title}} </span>
+      <div>
+        <span> {{film.rating}}</span>
+      </div>
+    </div>
   </mat-toolbar>
     <mat-card-content>
       <mat-list>

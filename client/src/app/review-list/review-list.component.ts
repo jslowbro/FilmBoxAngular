@@ -21,10 +21,6 @@ export class ReviewListComponent implements OnInit {
     this.updateReviews();
   }
   updateReviews() {
-    if (!this.sortBy){
-      this.sortBy = 'date';
-      // TODO
-    }
     this.displayReviews = this.sortReviews().slice(0, this.size);
   }
 
@@ -34,9 +30,12 @@ export class ReviewListComponent implements OnInit {
         return a.author.localeCompare(b.author);
       } else if (this.sortBy === 'upvotes') {
         return b.upvotes - a.upvotes;
-      } else if (this.sortBy === 'date'){
-        return 0;
-        // TODO
+      } else if (this.sortBy === 'date') {
+        if (a.date < b.date) {
+          return 1;
+        } else if (a.date > b.date){
+          return -1;
+        }
       }
       return 0;
     });

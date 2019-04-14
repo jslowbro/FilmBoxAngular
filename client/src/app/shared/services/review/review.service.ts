@@ -22,7 +22,6 @@ export class ReviewService {
   private apiAddress = ServerConfig.serverAddress + this.resource;
   private repoAddress = ServerConfig.serverAddress + ServerConfig.repoAddress + this.resource;
   getAll(): Observable<Review[]> {
-    console.log(this.apiAddress);
     return this.http.get<Review[]>(this.apiAddress)
       .pipe(map(data => data), catchError(this.handleError));
   }
@@ -40,11 +39,14 @@ export class ReviewService {
   }
   saveReview(review: Review, filmId: number) {
     const address = ServerConfig.serverAddress + '/films/' + filmId + '/reviews';
-    return this.http.post<Review>(address , review, httpOptions)
-      .subscribe(response => console.log(response));
+    review.date = null;
+    console.log(review);
+    return this.http.post<Review>(address , review, httpOptions).subscribe(response => console.log(response));
   }
   updateReview(review: Review) {
-    return this.http.put<Review>(ServerConfig.serverAddress + this.resource + '/' + review.id, review)
-      .subscribe(response => console.log(response));
+    console.log(review);
+    return this.http.put<Review>(ServerConfig.serverAddress + this.resource + '/' + review.id, review).subscribe(
+      response => console.log(response)
+    );
   }
 }

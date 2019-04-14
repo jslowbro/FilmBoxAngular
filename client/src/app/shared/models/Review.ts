@@ -6,4 +6,6 @@ export class Review {
   content = '';
   upvotes = 0;
   downvotes = 0;
+  rating: number;
+  date: Date;
 }

@@ -1,4 +1,3 @@
-import {Creator} from './Creator';
 import {Review} from './Review';
 
 export class Film {
@@ -8,4 +7,5 @@ export class Film {
   duration: number;
   genre: string;
   reviews: Review[];
+  rating: number;
 }

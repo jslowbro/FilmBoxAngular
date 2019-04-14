@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "reviews")
@@ -34,6 +36,12 @@ public class Review implements Serializable{
 
     @Column(name = "downvotes")
     private int downvotes;
+
+    @Column(name = "rating")
+    private int rating;
+
+    @Column(name = "pub_date")
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "film_id", nullable = false)

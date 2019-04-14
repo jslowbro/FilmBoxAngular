@@ -6,6 +6,7 @@ import {FilmListComponent} from './film-list/film-list.component';
 import {FilmDetailsComponent} from './film-details/film-details.component';
 import {CreatorDetailComponent} from './creator-detail/creator-detail.component';
 import {CreatorListComponent} from './creator-list/creator-list.component';
+import {LatestReviewListComponent} from './latest-review-list/latest-review-list.component';
 
 const routes: Routes = [
   {path: '', component: FilmListComponent},
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path: 'films/:id', component: FilmDetailsComponent},
   {path: 'creators/:id', component: CreatorDetailComponent},
   {path: 'creators', component: CreatorListComponent},
-  {path: 'reviews', component: ReviewListComponent}
+  {path: 'reviews', component: LatestReviewListComponent}
 ];
 
 @NgModule({

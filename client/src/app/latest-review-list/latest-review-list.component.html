@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div *ngIf="reviews">
+  <app-review-list [sortBy]="'date'" [size]="5" [reviews]="reviews" [header]="'Latest Reviews'" ></app-review-list>
+</div>
+</body>
+</html>

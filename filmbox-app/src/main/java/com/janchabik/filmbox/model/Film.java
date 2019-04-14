@@ -39,10 +39,14 @@ public class Film implements Serializable {
     @Column(name = "genre")
     private String genre;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "creator_id", nullable = false)
     @JsonIgnore
     private Creator creator;
+
+    @Column(name ="rating")
+    private double rating;
 
 
 
