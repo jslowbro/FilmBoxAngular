@@ -4,10 +4,11 @@
 <div *ngIf="film">
   <mat-card>
   <mat-toolbar style="height: max-content">
-    <div style="border: ">
-      <span> {{film.title}} </span>
+    <div style="border: 10px">
+      <span > {{film.title}} </span>
       <div>
-        <span> {{film.rating}}</span>
+        <span style="color: black;"> {{film.rating.toPrecision(3)}}</span>
+        <img src="/assets/star1.jpg">
       </div>
     </div>
   </mat-toolbar>
@@ -37,7 +38,7 @@
       </mat-list>
     </mat-card-content>
   </mat-card>
-  <app-review-list [reviews]="film.reviews" [size]="3" [sortBy]="'upvotes'" [header]="'User Reviews'"></app-review-list>
+  <app-review-list [reviews]="film.reviews" [inputSize]="3" [sortBy]="'upvotes'" [header]="'User Reviews'"></app-review-list>
   <app-review-form [film]="film"></app-review-form>
 </div>
 </body>

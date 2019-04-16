@@ -40,13 +40,9 @@ export class ReviewService {
   saveReview(review: Review, filmId: number) {
     const address = ServerConfig.serverAddress + '/films/' + filmId + '/reviews';
     review.date = null;
-    console.log(review);
-    return this.http.post<Review>(address , review, httpOptions).subscribe(response => console.log(response));
+    return this.http.post<Review>(address , review, httpOptions).subscribe();
   }
   updateReview(review: Review) {
-    console.log(review);
-    return this.http.put<Review>(ServerConfig.serverAddress + this.resource + '/' + review.id, review).subscribe(
-      response => console.log(response)
-    );
+    return this.http.put<Review>(ServerConfig.serverAddress + this.resource + '/' + review.id, review).subscribe();
   }
 }

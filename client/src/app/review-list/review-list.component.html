@@ -7,8 +7,8 @@
 </mat-toolbar>
   <mat-card-content>
     <div>
-    <mat-button-toggle-group #group="matButtonToggleGroup" value="{{size}}" (change)="setSize(group.value)">
-      <mat-button-toggle value="{{size}}"> Show Best</mat-button-toggle>
+    <mat-button-toggle-group #group="matButtonToggleGroup" value="{{inputSize}}" (change)="setSize(group.value)">
+      <mat-button-toggle value="{{inputSize}}"> Show Best</mat-button-toggle>
       <mat-button-toggle value="{{reviews.length}}">Show All</mat-button-toggle>
     </mat-button-toggle-group>
     </div>

@@ -9,16 +9,17 @@ import {Review} from '../shared/models/Review';
 })
 export class ReviewListComponent implements OnInit {
   @Input() reviews: Review[];
-  @Input() size: number;
+  @Input() inputSize: number;
   @Input() sortBy: string;
   @Input() header: string;
+  size: number;
   displayReviews: Review[];
 
   constructor(private reviewService: ReviewService) {
   }
 
   ngOnInit() {
-    this.updateReviews();
+    this.setSize(this.inputSize);
   }
   updateReviews() {
     this.displayReviews = this.sortReviews().slice(0, this.size);
